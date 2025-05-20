@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	outline: none;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	background-color: #1E9FFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-box {
+	width: 320px;
+	height: auto;
+	box-shadow: 0 0 8px #eeeeee;
+	background-color: #fff;
+	padding: 14px 20px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+h1 {
+	color: #1E9FFF;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	padding: 14px 0;
+	letter-spacing: 2px;
+	margin-bottom: 15px;
+}
+.text-box,.pass-box {
+	width: 310px;
+	height: 36px;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 10px;
+	border: 1px solid #e6e6e6;
+	margin-bottom: 15px;
+	transition: 0.3s;
+	border-radius: 2px;
+}
+i {
+	line-height: 36px;
+	color: #969696;
+}
+.text,.pass {
+	width: 285px;
+	height: 36px;
+	border-radius: 2px;
+	border: none;
+}
+.text-box:focus,.pass-box:focus,.text-box:hover,.pass-box:hover {
+	border-color: #C9C9C9;
+}
+.denglu {
+	width: 100%;
+	height: 38px;
+	border: none;
+	background-color: #1E9FFF;
+	color: #fff;
+	margin-bottom: 25px;
+	transition: 0.3s;
+	border-radius: 2px;
+}
+.denglu:hover,.denglu:focus,.dl:hover,.dl:active,.zc:hover,.zc:active {
+	opacity: 0.8;
+	cursor: pointer;
+}
+.fenlei {
+	width: 100%;
+	height: 21px;
+}
+.fenlei>span {
+    display: block;
+    color: #1E9FFF;
+    float: right;
+}
+.fenlei>span:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+.mar {
+	margin-bottom: 25px;
+}
+@media screen and (max-width:380px) {
+    .box {
+        width: 100%;
+    }
+    .form-box {
+        margin: 0 auto;
+        width: 80%;
+        padding-left: 5%;
+        padding-right: 5%;
+        /*margin: 0 !important;*/
+        /*margin-right: 0;*/
+    }
+    .text-box,.pass-box {
+        width: 100%;
+        padding-left: 2%;
+    }
+    .text,.pass {
+        width: 90%;
+    }
+}

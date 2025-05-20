@@ -1,0 +1,137 @@
+上传文件 伪静态如下所示
+
+location / {
+	try_files $uri $uri/ $uri.php$is_args$args;
+}
+
+
+php选择 7.4
+PHP7.4安装redis扩展 才能访问主页
+
+
+多线程配置请看redis 文件夹
+
+需要的全新安装的，删除install/install.lock安装锁，访问域名即可全新安装。
+不需要的配置 xm/config.php即可
+
+从其他数据库换到小沐系统数据库
+正常使用如有缺少问题功能请执行如下sql命令
+
+
+
+去网站上传自己https://img2.imgtp.com/ 
+
+index/smgz.php 和 userinfo.php  里面配置自己的关注二维码
+
+
+
+
+
+
+
+
+
+
+ALTER TABLE `qingka_wangke_class`
+ADD COLUMN `kcid` VARCHAR(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+ADD COLUMN `ckkf` VARCHAR(11) COLLATE utf8_unicode_ci NOT NULL,
+ADD COLUMN `vipprice` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '内部价';
+
+
+
+
+
+
+
+邀请限制次数 
+ALTER TABLE qingka_wangke_user ADD daily_invites INT DEFAULT 0 COMMENT '邀请限制次数';
+
+定时任务 域名/yqm.php 每天00:0清理用户邀请次数
+
+
+
+
+
+工单
+ALTER TABLE `qingka_wangke_gongdan`
+ADD COLUMN `last_responder_uid` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '最后一次回复工单的用户';
+
+
+
+
+
+
+
+添加推送
+ALTER TABLE `qingka_wangke_user`
+ADD COLUMN `pushPlusToken` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'pushPlusToken';
+
+
+卡密批次
+ALTER TABLE `qingka_wangke_user`
+ADD COLUMN `used_batches` text COLLATE utf8_unicode_ci NOT NULL COMMENT '福利卡密使用';
+
+
+签到随机
+ALTER TABLE `qingka_wangke_user`
+ADD COLUMN `last_sign_in_date` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '最后签到时间';
+
+
+添加卡密批次
+ALTER TABLE `qingka_wangke_km` 	
+ADD COLUMN `batch_id` INT(255) NOT NULL  COMMENT '卡密批次';
+
+
+
+
+
+
+
+
+
+
+订单列表最后更新时间
+ALTER TABLE `qingka_wangke_order`
+ADD COLUMN `finalupdate` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '最后更新';
+
+
+
+
+
+
+API相关功能缺少执行如下命令
+
+在qingka_wangke_config表里面执行
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('zddy ', '0.1');
+
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('zdxd', '0.1');
+
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('ckkg', '1');
+
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('xdkg', '1');
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('qdkg', '1');
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('yqsq', '1');
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('yqjl', '0.5');
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('yqsx', '2');
+
+INSERT INTO `qingka_wangke_config` (`v`, `k`) VALUES ('czph', '1');
+
+如果订单不能提交 显示提交失败，请补全自己具体如下
+
+ALTER TABLE `qingka_wangke_order`
+ADD COLUMN `detailed` TEXT COLLATE utf8_unicode_ci NOT NULL AFTER `leixing`,
+ADD COLUMN `dlip` TEXT COLLATE utf8_unicode_ci NOT NULL AFTER `detailed`,
+ADD COLUMN `docknum` INT(1) NOT NULL DEFAULT '0' AFTER `dlip`;
+
+添加会员
+ALTER TABLE `qingka_wangke_user`
+ADD COLUMN `vip` INT(11) NOT NULL DEFAULT '0' COMMENT '是否为会员',
+ADD COLUMN `vipexpire` VARCHAR(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '会员到期时间';
+
